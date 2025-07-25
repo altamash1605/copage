@@ -19,9 +19,25 @@ export default function Hero() {
             View Portfolio
         </button>
       </div>
-      {/* right Content */}
-       <ProfileCard />     
-                
+      {/* Container with profile + arrow + name */}
+      <div className="relative flex justify-center">
+        <ProfileCard />
+
+        {/* Arrow SVG overlay */}
+        <img
+          src={arrow}
+          alt="Arrow"
+          className="absolute bottom-[1.5rem] -left-[0.5rem] -translate-x-1/2 w-28"
+        />
+
+        {/* Name under arrow */}
+        <a
+          href="#about"
+          className="absolute -bottom-[1rem] -left-[4.8rem] -translate-x-1/2 text-lg font-extralight font-josefin text-gray-800 hover:text-brand transition"
+        >
+          Altamash Khan
+        </a>
+      </div>
     </section>
   );
 }
