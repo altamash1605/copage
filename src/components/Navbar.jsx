@@ -5,6 +5,30 @@ import logo from '../assets/logo.svg';
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const menuVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.3,
+        ease: 'easeInOut',
+        staggerChildren: 0.1,
+        delayChildren: 0.05,
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: -10,
+      transition: { duration: 0.2 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <section>
       <nav className="hidden md:flex flex-row shrink-0 justify-between items-center px-20 md:px-10 py-4 max-w-7xl mx-auto">
@@ -22,20 +46,20 @@ export default function Navbar() {
           <img src={logo} alt="CoPage logo" className="h-20 w-auto" />
         </button>
 
-        {/* Framer Motion Dropdown */}
         <AnimatePresence>
           {menuOpen && (
             <motion.ul
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              variants={menuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
               className="md:hidden absolute top-12 left-[6.3rem] leading-[0.8] mt-6 space-y-4 text-5xl font-bold font-poppins text-[#1F2937] text-opacity-25"
             >
-              <li><a href="#home">Home</a></li>
-              <li><a href="#story">Story</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#build">Build</a></li>
+              {['home', 'story', 'projects', 'build'].map((item) => (
+                <motion.li key={item} variants={itemVariants}>
+                  <a href={`#${item}`}>{item.charAt(0).toUpperCase() + item.slice(1)}</a>
+                </motion.li>
+              ))}
             </motion.ul>
           )}
         </AnimatePresence>
