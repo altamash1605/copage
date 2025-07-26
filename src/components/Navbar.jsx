@@ -1,9 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo.svg';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const dropdownRef = useRef();
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    }
+
+    if (menuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuOpen]);
 
   const menuVariants = {
     hidden: { opacity: 0, y: -10 },
@@ -49,6 +67,7 @@ export default function Navbar() {
         <AnimatePresence>
           {menuOpen && (
             <motion.ul
+              ref={dropdownRef}
               variants={menuVariants}
               initial="hidden"
               animate="visible"
