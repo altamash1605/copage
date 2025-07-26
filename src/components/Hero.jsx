@@ -5,9 +5,11 @@ import ProfileCard from './ProfileCard';
 
 export default function Hero() {
   return (
-    <section className="max-w-7xl mx-auto px-10 py-10 flex flex-col md:flex-row items-center justify-between gap-12">
+    <section className="max-w-7xl mx-auto md:px-10 px-20 py-10 flex flex-col md:flex-row items-center justify-between md:gap-12 gap-40">
+ 
+    
       {/* Left Content */}
-      <div className="max-w-xl">
+      <div className="md:max-w-xl mt-28 md:mt-10">
     <h1 className="text-[50px] md:text-[55px] font-extrabold leading-tight font-poppins">
           Designing The Web.<br />
           <span className="text-brand">Together.</span>
@@ -20,6 +22,7 @@ export default function Hero() {
         </button>
       </div>
       {/* Container with profile + arrow + name */}
+      
       <div className="relative flex justify-center">
         <ProfileCard />
 
