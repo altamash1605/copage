@@ -5,7 +5,7 @@ import ProfileCard from './ProfileCard';
 
 export default function Hero() {
   return (
-    <section className="max-w-7xl mx-auto md:px-10 px-20 py-10 flex flex-col md:flex-row items-center justify-between md:gap-12 gap-40">
+    <section className="max-w-7xl mx-auto md:px-10 px-10 py-10 flex flex-col md:flex-row items-center justify-between md:gap-12 gap-40">
  
     
       {/* Left Content */}
