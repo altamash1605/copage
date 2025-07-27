@@ -22,7 +22,7 @@ export default function ProjectCard({ title, description, image, tags, liveUrl, 
       >
         <a
           href={liveUrl || `/projects/${detailSlug}`}
-          className="px-6 py-2 bg-white text-black font-semibold rounded hover:bg-yellow-300 transition"
+          className="px-4 py-2 bg-white text-black font-semibold rounded hover:bg-yellow-300 transition"
         >
           View Project
         </a>
@@ -32,7 +32,7 @@ export default function ProjectCard({ title, description, image, tags, liveUrl, 
       <div className="md:hidden absolute bottom-[9rem] left-1/2 transform -translate-x-1/2 z-20">
         <a
           href={liveUrl || `/projects/${detailSlug}`}
-          className="px-6 py-2 bg-white text-black font-semibold rounded shadow-md hover:bg-yellow-300 transition"
+          className="px-4 py-2 bg-white text-black font-semibold rounded shadow-md hover:bg-yellow-300 transition"
         >
           View Project
         </a>
