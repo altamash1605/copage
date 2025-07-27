@@ -17,7 +17,7 @@ export default function Hero() {
         <p className="mt-4 text-xl text-gray-700 font-poppins">
           Build websites with purpose and people
         </p>
-        <button className="relative bg-gray-800 text-white px-4 mt-5 py-3 font-josefin font-extralight text-xl drop-shadow-yellow drop-shadow-yellow transition-all duration-[50ms] hover:drop-shadow-yellowHover">
+        <button className="relative bg-gray-800 text-white px-4 mt-5 py-3 font-josefin font-extralight text-xl drop-shadow-yellow drop-shadow-yellow transition-all duration-[50ms] hover:drop-shadow-yellowHover" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
             View Portfolio
         </button>
       </div>
