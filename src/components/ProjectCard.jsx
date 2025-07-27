@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function ProjectCard({ title, description, image, tags, liveUrl, detailSlug }) {
   return (
-    <div className="relative group overflow-hidden rounded-lg shadow-lg min-w-[90%] sm:min-w-[60%] md:min-w-[30%]">
+    <div className="relative group overflow-hidden rounded-lg shadow-lg min-w-[90%] sm:min-w-[60%] md:min-w-[30%] min-h-full">
       {/* Yellow drop shadow */}
         {/*<div className="absolute top-2 left-2 w-full h-full bg-[#FBBB00] z-0 rounded-lg" />*/}
 
