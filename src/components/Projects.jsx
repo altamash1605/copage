@@ -4,45 +4,69 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import { Autoplay, Pagination } from 'swiper/modules';
 
+import { motion } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 import projects from '../data/projects';
 
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const slideVariants = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0 },
+};
+
 export default function Projects() {
   return (
-    <section id="projects" className="py-16 px-8 md:px-12 max-w-7xl mx-auto">
-      <h2 className="text-4xl md:text-5xl mb-10 text-left font-bold font-poppins"><span className='text-brand font-bold font-poppins'>Co</span>Projects</h2>
+    <motion.section
+      id="projects"
+      className="py-16 px-8 md:px-12 max-w-7xl mx-auto"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <h2 className="text-4xl md:text-5xl mb-10 text-left font-bold font-poppins">
+        <span className="text-brand font-bold font-poppins">Co</span>Projects
+      </h2>
 
-        <Swiper
-          modules={[Autoplay, Pagination]}
-          spaceBetween={24}
-          slidesPerView={3.2}
-          centeredSlides={true}
-          grabCursor={true}
-          loop={true}
-          pagination={{
-            clickable: true,
-            el: '.swiper-pagination',
-          }}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          breakpoints={{
-            320: { slidesPerView: 1.3 },
-            768: { slidesPerView: 2.2 },
-            1024: { slidesPerView: 3.2 },
-          }}
-          className="pb-12"
-        >
-          {projects.map((project, index) => (
-            <SwiperSlide key={index}>
+      <Swiper
+        modules={[Autoplay, Pagination]}
+        spaceBetween={24}
+        slidesPerView={3.2}
+        centeredSlides={true}
+        grabCursor={true}
+        loop={true}
+        pagination={{
+          clickable: true,
+          el: '.swiper-pagination',
+        }}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        breakpoints={{
+          320: { slidesPerView: 1.3 },
+          768: { slidesPerView: 2.2 },
+          1024: { slidesPerView: 3.2 },
+        }}
+        className="pb-12"
+      >
+        {projects.map((project, index) => (
+          <SwiperSlide key={index}>
+            <motion.div variants={slideVariants} transition={{ duration: 0.5 }}>
               <ProjectCard {...project} />
-            </SwiperSlide>
-          ))}
-          <div className="swiper-pagination !mt-4 [&_.swiper-pagination-bullet-active]:!bg-red-600 [&_.swiper-pagination-bullet]:!bg-brand" />
-        </Swiper>
-
-    
-    </section>
+            </motion.div>
+          </SwiperSlide>
+        ))}
+        <div className="swiper-pagination !mt-4 [&_.swiper-pagination-bullet-active]:!bg-red-600 [&_.swiper-pagination-bullet]:!bg-brand" />
+      </Swiper>
+    </motion.section>
   );
 }
