@@ -54,7 +54,7 @@ export default function Navbar() {
         <ul className="flex flex-row gap-8 text-lg font-light text-gray-800">
           <li><a href="https://copage.vercel.app" className="hover:text-brand">Home</a></li>
           <li><a href="#story" className="hover:text-brand">Story</a></li>
-          <li><a href="#portfolio" className="hover:text-brand">Portfolio</a></li>
+          <li><a href="#projects" className="hover:text-brand">Projects</a></li>
           <li><a href="#build" className="hover:text-brand">Let’s Build</a></li>
         </ul>
       </nav>
