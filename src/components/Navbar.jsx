@@ -76,9 +76,9 @@ export default function Navbar() {
             >
                 {[
                 { name: 'Home', href: '#home' },
-                { name: 'About', href: 'https://copage.vercel.app' },
+                { name: 'Story', href: '#story' },
                 { name: 'Projects', href: '#projects' },
-                { name: 'Build', href: 'https://yourdomain.com/build' }
+                { name: 'Build', href: '#build' }
                 ].map(({ name, href }) => (
                 <motion.li key={name} variants={itemVariants}>
                     <a
