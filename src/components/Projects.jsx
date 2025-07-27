@@ -13,30 +13,35 @@ export default function Projects() {
       <h2 className="text-4xl md:text-5xl mb-10 text-left font-bold font-poppins"><span className='text-brand font-bold font-poppins'>Co</span>Projects</h2>
 
         <Swiper
-            modules={[Autoplay, Pagination]}
-            spaceBetween={24}
-            slidesPerView={3.2}
-            centeredSlides={true}
-            grabCursor={true}
-            loop={true}
-            pagination={{ clickable: true }}
-            autoplay={{
-              delay: 3000, // 3 seconds
-              disableOnInteraction: false,
-            }}
-            breakpoints={{
-                320: { slidesPerView: 1.3 },
-                768: { slidesPerView: 2.2 },
-                1024: { slidesPerView: 3.2 },
-            }}
-            className="pb-12"
-         >
-  {projects.map((project, index) => (
-    <SwiperSlide key={index}>
-      <ProjectCard {...project} />
-    </SwiperSlide>
-  ))}
-</Swiper>
+          modules={[Autoplay, Pagination]}
+          spaceBetween={24}
+          slidesPerView={3.2}
+          centeredSlides={true}
+          grabCursor={true}
+          loop={true}
+          pagination={{
+            clickable: true,
+            el: '.swiper-pagination',
+          }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+            320: { slidesPerView: 1.3 },
+            768: { slidesPerView: 2.2 },
+            1024: { slidesPerView: 3.2 },
+          }}
+          className="pb-12"
+        >
+          {projects.map((project, index) => (
+            <SwiperSlide key={index}>
+              <ProjectCard {...project} />
+            </SwiperSlide>
+          ))}
+          <div className="swiper-pagination !mt-4 [&_.swiper-pagination-bullet-active]:!bg-red-600 [&_.swiper-pagination-bullet]:!bg-brand" />
+        </Swiper>
+
     
     </section>
   );
