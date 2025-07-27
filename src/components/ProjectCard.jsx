@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function ProjectCard({ title, description, image, tags, liveUrl, detailSlug }) {
   return (
-    <div className="relative group overflow-hidden rounded-lg shadow-lg min-w-[90%] sm:min-w-[60%] md:min-w-[30%] h-[400px]"> {/* Set fixed height */}
+    <div className="relative group overflow-hidden rounded-lg shadow-lg min-w-[90%] sm:min-w-[60%] md:min-w-[30%] h-[450px]"> {/* Set fixed height */}
       
       {/* Project Image */}
       <img
@@ -27,7 +27,7 @@ export default function ProjectCard({ title, description, image, tags, liveUrl, 
       </motion.div>
 
       {/* Always-visible button on mobile */}
-      <div className="md:hidden absolute bottom-[10rem] left-1/2 transform -translate-x-1/2 z-20">
+      <div className="md:hidden absolute bottom-[13rem] left-1/2 transform -translate-x-1/2 z-20">
         <a
           href={liveUrl || `/projects/${detailSlug}`}
           className="px-4 py-2 bg-white text-black font-semibold rounded shadow-md hover:bg-yellow-300 transition"
@@ -37,7 +37,7 @@ export default function ProjectCard({ title, description, image, tags, liveUrl, 
       </div>
 
       {/* Project Info */}
-      <div className="bg-white px-4 py-3 relative z-10 h-[calc(100%-16rem)]"> {/* Set remaining height for the info */}
+      <div className="bg-white px-4 py-3 relative z-10 h-[calc(100%-12rem)]"> {/* Set remaining height for the info */}
         <h3 className="text-xl font-bold text-gray-800">{title}</h3>
         <p className="text-sm text-gray-500 mt-1">{description}</p>
 
