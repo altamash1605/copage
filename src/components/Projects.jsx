@@ -9,8 +9,8 @@ import projects from '../data/projects';
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-16 px-4 md:px-12 max-w-7xl mx-auto">
-      <h2 className="text-3xl md:text-5xl mb-10 text-left font-bold font-poppins"><span className='text-brand font-bold font-poppins'>Co</span>Projects</h2>
+    <section id="projects" className="py-16 px-8 md:px-12 max-w-7xl mx-auto">
+      <h2 className="text-4xl md:text-5xl mb-10 text-left font-bold font-poppins"><span className='text-brand font-bold font-poppins'>Co</span>Projects</h2>
 
         <Swiper
             modules={[Autoplay, Pagination]}

@@ -5,7 +5,7 @@ const projects = [
     description: 'A ride management dashboard with real-time tracking for fleet managers.',
     image: '/images/cabassist.png',
     tags: ['React', 'Tailwind', 'Firebase'],
-    liveUrl: 'https://cabassist.example.com',
+    liveUrl: 'https://cabassist.streamlit.app',
     detailSlug: 'cabassist',
   },
   {
