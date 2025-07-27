@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
+import Build from './components/Build';
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <main>
         <Hero />
         <Projects />
+        <Build />
       </main>
     </>
   );

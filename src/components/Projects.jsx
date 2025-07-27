@@ -30,7 +30,7 @@ export default function Projects() {
       variants={containerVariants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.1 }}
     >
       <h2 className="text-4xl md:text-5xl mb-10 text-left font-bold font-poppins">
         <span className="text-brand font-bold font-poppins">Co</span>Projects
@@ -60,7 +60,7 @@ export default function Projects() {
       >
         {projects.map((project, index) => (
           <SwiperSlide key={index}>
-            <motion.div variants={slideVariants} transition={{ duration: 0.5 }}>
+            <motion.div variants={slideVariants} transition={{ duration: 0.3}}>
               <ProjectCard {...project} />
             </motion.div>
           </SwiperSlide>
