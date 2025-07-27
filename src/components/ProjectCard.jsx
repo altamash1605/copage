@@ -4,7 +4,7 @@ export default function ProjectCard({ title, description, image, tags, liveUrl, 
   return (
     <div className="relative group overflow-hidden rounded-lg shadow-lg min-w-[80%] sm:min-w-[60%] md:min-w-[30%]">
       {/* Yellow drop shadow */}
-      <div className="absolute top-2 left-2 w-full h-full bg-[#FBBB00] z-0 rounded-lg" />
+        {/*<div className="absolute top-2 left-2 w-full h-full bg-[#FBBB00] z-0 rounded-lg" />*/}
 
       {/* Project Image */}
       <img
@@ -29,7 +29,7 @@ export default function ProjectCard({ title, description, image, tags, liveUrl, 
       </motion.div>
 
       {/* Always-visible button on mobile */}
-      <div className="md:hidden absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="md:hidden absolute bottom-[9rem] left-1/2 transform -translate-x-1/2 z-20">
         <a
           href={liveUrl || `/projects/${detailSlug}`}
           className="px-6 py-2 bg-white text-black font-semibold rounded shadow-md hover:bg-yellow-300 transition"
