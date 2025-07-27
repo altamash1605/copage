@@ -4,7 +4,7 @@ export default function ProjectCard({ title, description, image, tags, liveUrl, 
   return (
     <div className="relative group overflow-hidden rounded-lg shadow-lg min-w-[80%] sm:min-w-[60%] md:min-w-[30%]">
       {/* Yellow drop shadow behind image */}
-      <div className="absolute top-2 left-2 w-full h-full bg-[#FBBB00] z-0 rounded-lg" />
+      <div />
 
       {/* Project Image */}
       <img

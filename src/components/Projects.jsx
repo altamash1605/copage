@@ -24,6 +24,11 @@ export default function Projects() {
               delay: 3000, // 3 seconds
               disableOnInteraction: false,
             }}
+            breakpoints={{
+                320: { slidesPerView: 1.3 },
+                768: { slidesPerView: 2.2 },
+                1024: { slidesPerView: 3.2 },
+            }}
             className="pb-12"
          >
   {projects.map((project, index) => (
