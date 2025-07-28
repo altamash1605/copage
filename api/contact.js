@@ -12,19 +12,20 @@ export default async function handler(req, res) {
 
   try {
     await resend.emails.send({
-      from: 'CoPage <onboarding@resend.dev>',
-      to: 'altamash16.05@gmail.com',
-      subject: 'New Contact Form Submission',
-      html: 
-        <div>
-          <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
-          <p><strong>Message:</strong></p>
-          <p>${message}</p>
-        </div>
-      ,
-    });
+  from: 'CoPage <onboarding@resend.dev>',
+  to: 'altamash16.05@gmail.com',
+  subject: 'New Contact Form Submission',
+  html: 
+    <div>
+      <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
+      <p><strong>Message:</strong></p>
+      <p>${message}</p>
+    </div>
+  ,
+});
+    
 
     return res.status(200).json({ success: true });
   } catch (err) {
