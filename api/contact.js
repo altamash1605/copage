@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   try {
     await resend.emails.send({
   from: 'CoPage <onboarding@resend.dev>',
-  to: 'altamash16.05@gmail.com',
+  to: 'altamashthegreat06@gmail.com',
   subject: 'New Contact Form Submission',
   html: `
     <div>

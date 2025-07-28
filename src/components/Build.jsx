@@ -32,10 +32,10 @@ export default function Build() {
             </div>
           </div>
           {/* Map Placeholder for mobile */}
-          <div className="space-y-2">
+          <div className="space-y-2 md:hidden">
             <iframe
               title="CoPage Location"
-              className="w-full h-40 rounded-md border-0 md:hidden"
+              className="w-full h-40 rounded-md border-0 "
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14018.931206034258!2d77.2090217!3d28.6139391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3dd04c7b11b%3A0x6ac3d6d1be0cf16b!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1690000000000!5m2!1sen!2sin"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
