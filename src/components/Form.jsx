@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { FiCheckCircle } from 'react-icons/fi';
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -44,6 +46,23 @@ export default function Form() {
       setStatus('error');
     }
   };
+
+  if (status === 'success') {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-white font-josefin p-6 rounded-md bg-gray-700 text-center space-y-4 shadow-md"
+      >
+        <FiCheckCircle className="text-5xl text-brand mx-auto" />
+        <h3 className="text-2xl font-semibold text-brand">Thank you for reaching out!</h3>
+        <p className="text-lg text-gray-300">
+          We’ve received your message and will get back to you as soon as possible.
+        </p>
+      </motion.div>
+    );
+  }
 
   return (
     <form
@@ -102,9 +121,6 @@ export default function Form() {
         {status === 'loading' ? 'Sending...' : 'Start Conversation'}
       </button>
 
-      {status === 'success' && (
-        <p className="text-green-400 text-sm col-span-2">Thanks! We'll be in touch.</p>
-      )}
       {status === 'error' && (
         <p className="text-red-400 text-sm col-span-2">Something went wrong. Please try again.</p>
       )}
