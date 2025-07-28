@@ -15,7 +15,8 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <div className="h-80 overflow-hidden text-white font-josefin relative">
+    <div className="h-24 overflow-hidden text-white font-josefin relative">
+
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
