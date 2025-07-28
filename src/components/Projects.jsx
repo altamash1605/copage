@@ -35,7 +35,8 @@ export default function Projects() {
       <h2 className="text-4xl md:text-5xl mb-10 text-left font-bold font-poppins">
         <span className="text-brand font-bold font-poppins">Co</span>Projects
       </h2>
-
+      <p className="font-josefin font-regular text-gray-900 text-xl">Explore a curated showcase of collaborative creations — crafted with passion, precision, and purpose. From smart tools to elegant interfaces, each project reflects the essence of teamwork and innovation. Dive in, get inspired, and see how CoPage brings ideas to life with real-world impact.
+      </p>
       <Swiper
         modules={[Autoplay, Pagination]}
         spaceBetween={24}
@@ -56,7 +57,7 @@ export default function Projects() {
           700: { slidesPerView: 2 },
           1024: { slidesPerView: 3.2 },
         }}
-        className="pb-12"
+        className="py-12"
       >
         {projects.map((project, index) => (
           <SwiperSlide key={index}>

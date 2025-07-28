@@ -1,9 +1,8 @@
-// components/Testimonials.jsx
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import testimonials from '../data/testimonials';
 
-export default function Testimonials() {
+export default function Testimonials({ className = "" }) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -15,8 +14,7 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <div className="h-24 overflow-hidden text-white font-josefin relative">
-
+    <div className={`h-24 overflow-hidden font-josefin  md:text-white relative ${className}`}>
       <AnimatePresence mode="wait">
         <motion.div
           key={index}

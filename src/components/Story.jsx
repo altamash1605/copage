@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import ProfileCard from './ProfileCard';
+import Testimonials from './Testimonials';
 
 export default function Story() {
   return (
@@ -43,6 +44,9 @@ export default function Story() {
             </div>
           </div>
         </motion.div>
+      </div>
+      <div className="md:hidden">
+        <Testimonials className="text-gray-900"/>
       </div>
     </section>
   );
