@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   from: 'CoPage <onboarding@resend.dev>',
   to: 'altamash16.05@gmail.com',
   subject: 'New Contact Form Submission',
-  html: 
+  html: `
     <div>
       <p><strong>Name:</strong> ${firstName} ${lastName}</p>
       <p><strong>Email:</strong> ${email}</p>
@@ -23,7 +23,7 @@ export default async function handler(req, res) {
       <p><strong>Message:</strong></p>
       <p>${message}</p>
     </div>
-  ,
+  `,
 });
     
 
