@@ -1,6 +1,6 @@
 import Form from './Form';
 import Testimonials from './Testimonials';
-import { FaInstagram, FaWhatsapp, FaXTwitter } from 'react-icons/fa6';
+import { FaInstagram, FaWhatsapp, FaTwitter } from 'react-icons/fa';
 
 export default function Build() {
   return (
@@ -33,7 +33,7 @@ export default function Build() {
                 <FaWhatsapp className="hover:text-brand transition" />
               </a>
               <a href="https://x.com" target="_blank" rel="noopener noreferrer">
-                <FaXTwitter className="hover:text-brand transition" />
+                <FaTwitter className="hover:text-brand transition" />
               </a>
             </div>
           </div>
