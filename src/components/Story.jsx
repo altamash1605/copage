@@ -45,7 +45,7 @@ export default function Story() {
           </div>
         </motion.div>
       </div>
-      <div className="md:hidden">
+      <div className="md:hidden bg-brand rounded-xl p-5">
         <Testimonials className="text-gray-900"/>
       </div>
     </section>
