@@ -23,15 +23,24 @@ export default function NamePrompt() {
     return () => window.removeEventListener('resize', checkAndShow);
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!name.trim()) return;
-    setSubmitted(true);
-    sessionStorage.setItem('namePromptSeen', 'true');
-    localStorage.setItem('visitorName', name);
-    setTimeout(() => setShowPrompt(false), 1500);
-  };
 
+  const handleSubmit = (e) => {
+  e.preventDefault();
+  if (!name.trim()) return;
+
+  // Fire GA event
+  window.gtag && window.gtag('event', 'name_collected', {
+    value: name,
+  });
+
+  setSubmitted(true);
+  sessionStorage.setItem('namePromptSeen', 'true');
+  localStorage.setItem('visitorName', name);
+  setTimeout(() => {
+    setShowPrompt(false);
+  }, 1500);
+};
+  
   return (
     <AnimatePresence>
       {showPrompt && (
