@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import ProfileCard from './ProfileCard';
 import Testimonials from './Testimonials';
+import profileImage from '../assets/altamash.jpg'; // Replace with your actual image path
 
 export default function Story() {
   return (
@@ -9,7 +10,7 @@ export default function Story() {
         <span className="text-brand">Co</span>Story
       </h2>
 
-      <div className="flex flex-col md:flex-row gap-10 items-center justify-stretch  md:w-full">
+      <div className="flex flex-col md:flex-row gap-10 items-center justify-stretch md:w-full">
         {/* Left: Story Text */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -18,6 +19,15 @@ export default function Story() {
           viewport={{ once: true }}
           className="w-full md:w-1/2 text-gray-700 space-y-5 font-josefin"
         >
+          {/* Mobile Profile Picture */}
+          <div className="md:hidden flex justify-center">
+            <img
+              src={profileImage}
+              alt="Altamash Khan"
+              className="w-28 h-28 rounded-full object-cover mb-4 border-4 border-brand shadow-md"
+            />
+          </div>
+
           <h3 className="text-2xl font-semibold">How it all began</h3>
           <p className="text-xl font-regular">
             CoPage is a one-person mission to make powerful websites simple and accessible. I started building websites out of pure curiosity — and soon realized how many creatives, founders, and small business owners needed a beautiful online presence without the complexity. What began as a personal project quickly turned into something more: a platform for others to launch their own ideas.
@@ -34,7 +44,7 @@ export default function Story() {
           </p>
 
           <p className="text-xl font-regular">
-            Your brand deserves more than a template. If you’re ready to turn your ideas into something beautiful — <a href="#build" className="underline hover:text-brand font-bold font-black">let’s start the conversation</a>.
+            Your brand deserves more than a template. If you’re ready to turn your ideas into something beautiful — <a href="#build" className="underline text-brand">let’s start the conversation</a>.
           </p>
         </motion.div>
 
@@ -53,8 +63,9 @@ export default function Story() {
           </div>
         </motion.div>
       </div>
-      <div className="md:hidden bg-brand rounded-xl p-5">
-        <Testimonials className="text-gray-900"/>
+
+      <div className="md:hidden bg-brand rounded-xl p-5 mt-8">
+        <Testimonials className="text-gray-900" />
       </div>
     </section>
   );
