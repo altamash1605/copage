@@ -13,7 +13,7 @@ export default function NamePrompt() {
     if (consent === 'true' && !nameSeen) {
       const timer = setTimeout(() => {
         setShowPrompt(true);
-      }, 1000); // Delay for smoother UX
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -24,9 +24,7 @@ export default function NamePrompt() {
     setSubmitted(true);
     sessionStorage.setItem('namePromptSeen', 'true');
     localStorage.setItem('visitorName', name);
-    setTimeout(() => {
-      setShowPrompt(false);
-    }, 1500);
+    setTimeout(() => setShowPrompt(false), 1500);
   };
 
   return (
@@ -37,15 +35,13 @@ export default function NamePrompt() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className="fixed bottom-4 left-4 right-4 bg-white text-gray-800 px-6 py-4 rounded-xl shadow-lg z-50 max-w-md mx-auto font-josefin w-full"
+          className="fixed bottom-4 left-4 right-4 sm:left-1/2 sm:translate-x-[-50%] bg-white text-gray-800 px-6 py-4 rounded-xl shadow-lg z-50 font-josefin max-w-sm w-[95%]"
         >
           {submitted ? (
             <p className="text-center text-brand font-semibold">Thanks, {name}!</p>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 items-center justify-between">
-              <label htmlFor="name" className="sr-only">
-                Your Name
-              </label>
+              <label htmlFor="name" className="sr-only">Your Name</label>
               <input
                 id="name"
                 type="text"
