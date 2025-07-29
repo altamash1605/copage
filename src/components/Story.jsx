@@ -1,11 +1,39 @@
 import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import ProfileCard from './ProfileCard';
 import Testimonials from './Testimonials';
 import profileImage from '../assets/altamash.jpg'; // Replace with your actual image path
 
 export default function Story() {
+  const storyRef = useRef();
+  let timeEntered = null;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          timeEntered = Date.now();
+        } else if (timeEntered) {
+          const timeSpent = Math.round((Date.now() - timeEntered) / 1000);
+          if (timeSpent > 3 && window.gtag) {
+            window.gtag('event', 'time_on_story_section', {
+              event_category: 'Engagement',
+              event_label: 'Story Section',
+              value: timeSpent,
+            });
+          }
+          timeEntered = null;
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (storyRef.current) observer.observe(storyRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="story" className="py-16 px-8 md:px-12 max-w-7xl mx-auto md:h-screen">
+    <section id="story" ref={storyRef} className="py-16 px-8 md:px-12 max-w-7xl mx-auto md:h-screen">
       <h2 className="text-4xl md:text-5xl mb-10 font-extrabold font-poppins">
         <span className="text-brand">Co</span>Story
       </h2>
