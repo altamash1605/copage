@@ -6,7 +6,7 @@ import profileImage from '../assets/altamash.jpg'; // Replace with your actual i
 export default function Story() {
   return (
     <section id="story" className="py-16 px-8 md:px-12 max-w-7xl mx-auto md:h-screen">
-      <h2 className="text-4xl md:text-5xl mb-10 font-bold font-poppins">
+      <h2 className="text-4xl md:text-5xl mb-10 font-extrabold font-poppins">
         <span className="text-brand">Co</span>Story
       </h2>
 
