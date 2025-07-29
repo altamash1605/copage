@@ -59,7 +59,7 @@ export default function CookieConsent() {
             </button>
             <button
               onClick={() => handleConsent(false)}
-              className="px-4 py-2 rounded-md bg-gray-800 text-white font-semibold hover:bg-gray-700 transition"
+              className="px-4 py-2 rounded-md bg-yellow-300 text-gray-600 font-semibold hover:bg-gray-700 transition"
             >
               Reject
             </button>
