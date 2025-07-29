@@ -33,10 +33,9 @@ export default function CookieConsent() {
         window.dataLayer.push(arguments);
       }
       gtag('js', new Date());
-      gtag('config', 'G-CKXQZ6B8XE',
-          {
+gtag('config', 'G-CKXQZ6B8XE', {
   debug_mode: true
-  });
+});
 
   return (
     <AnimatePresence>
