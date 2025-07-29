@@ -90,7 +90,7 @@ export default function Navbar() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="md:hidden absolute top-12 left-[6.3rem] leading-[0.8] mt-6 space-y-4 text-5xl font-bold font-poppins text-[#1F2937] text-opacity-25"
+              className="md:hidden absolute top-12 left-[6.3rem] leading-[0.7] mt-6 space-y-4 text-5xl font-bold font-poppins text-[#1F2937] text-opacity-25"
             >
               {[
                 { name: 'Home', href: 'https://copage.vercel.app' },
