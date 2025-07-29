@@ -7,15 +7,20 @@ export default function NamePrompt() {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem('cookieConsent');
-    const nameSeen = sessionStorage.getItem('namePromptSeen');
-
-    if (consent === 'true' && !nameSeen) {
-      const timer = setTimeout(() => {
+    const checkAndShow = () => {
+      const consent = localStorage.getItem('cookieConsent') === 'true';
+      const nameSeen = sessionStorage.getItem('namePromptSeen') === 'true';
+      if (consent && !nameSeen) {
         setShowPrompt(true);
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
+      }
+    };
+
+    // initial check
+    checkAndShow();
+
+    // also listen to resize in case viewport changes does not remount
+    window.addEventListener('resize', checkAndShow);
+    return () => window.removeEventListener('resize', checkAndShow);
   }, []);
 
   const handleSubmit = (e) => {
