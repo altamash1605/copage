@@ -45,7 +45,7 @@ export default function CookieConsent() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className="fixed bottom-4 left-4 right-4 bg-brand text-white px-6 py-4 rounded-xl shadow-lg z-50 max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-josefin"
+          className="fixed bottom-4 left-4 right-4 bg-brand text-gray-800 px-6 py-4 rounded-xl shadow-lg z-50 max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-josefin"
         >
           <p className="text-sm sm:text-base">
             We use cookies to enhance your experience. Do you accept?
