@@ -26,15 +26,20 @@ export default function Navbar() {
 
   // Auto preview dropdown on mobile once
   useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    if (isMobile && !previewShown) {
-      setMenuOpen(true);
-      setPreviewShown(true);
+  const isMobile = window.innerWidth < 768;
+  const hasShown = sessionStorage.getItem('dropdownPreviewShown');
 
-      const timer = setTimeout(() => setMenuOpen(false), 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [previewShown]);
+  if (isMobile && !hasShown) {
+    setMenuOpen(true);
+    sessionStorage.setItem('dropdownPreviewShown', 'true');
+
+    const closeTimeout = setTimeout(() => {
+      setMenuOpen(false);
+    }, 2000); // Close after 2 seconds
+
+    return () => clearTimeout(closeTimeout);
+  }
+}, []);
 
   const menuVariants = {
     hidden: { opacity: 0, y: -10 },
