@@ -4,6 +4,7 @@ import logo from '../assets/logo.svg';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [previewShown, setPreviewShown] = useState(false);
   const dropdownRef = useRef();
 
   // Close dropdown on outside click
@@ -22,6 +23,18 @@ export default function Navbar() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [menuOpen]);
+
+  // Auto preview dropdown on mobile once
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    if (isMobile && !previewShown) {
+      setMenuOpen(true);
+      setPreviewShown(true);
+
+      const timer = setTimeout(() => setMenuOpen(false), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [previewShown]);
 
   const menuVariants = {
     hidden: { opacity: 0, y: -10 },
@@ -59,43 +72,40 @@ export default function Navbar() {
         </ul>
       </nav>
 
-                <nav className="md:hidden relative flex flex-col justify-between items-center px-10 mx-auto w-64">
+      <nav className="md:hidden relative flex flex-col justify-between items-center px-10 mx-auto w-64">
         <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden">  
-            <img src={logo} alt="CoPage logo" className="h-20 w-auto" />
+          <img src={logo} alt="CoPage logo" className="h-20 w-auto" />
         </button>
 
         <AnimatePresence>
-            {menuOpen && (
+          {menuOpen && (
             <motion.ul
-                ref={dropdownRef}
-                variants={menuVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="md:hidden absolute top-12 left-[6.3rem] leading-[0.8] mt-6 space-y-4 text-5xl font-bold font-poppins text-[#1F2937] text-opacity-25"
+              ref={dropdownRef}
+              variants={menuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="md:hidden absolute top-12 left-[6.3rem] leading-[0.8] mt-6 space-y-4 text-5xl font-bold font-poppins text-[#1F2937] text-opacity-25"
             >
-                {[
+              {[
                 { name: 'Home', href: 'https://copage.vercel.app' },
                 { name: 'Story', href: '#story' },
                 { name: 'Projects', href: '#projects' },
                 { name: 'Build', href: '#build' }
-                ].map(({ name, href }) => (
+              ].map(({ name, href }) => (
                 <motion.li key={name} variants={itemVariants}>
-                    <a
+                  <a
                     href={href}
                     {...(href.startsWith('http') ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    >
+                  >
                     {name}
-                    </a>
+                  </a>
                 </motion.li>
-                ))}
+              ))}
             </motion.ul>
-            )}
+          )}
         </AnimatePresence>
-        </nav>
-
-
-      
+      </nav>
     </section>
   );
 }
