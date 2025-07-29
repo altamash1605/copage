@@ -5,6 +5,9 @@ import Build from './components/Build';
 import Story from './components/Story';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
+import NamePrompt from './components/NamePrompt';
+
+
 
 function App() {
   return (
@@ -18,6 +21,7 @@ function App() {
       </main>
       <Footer />
       <CookieConsent />
+      <NamePrompt />
     </>
   );
 }
