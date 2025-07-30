@@ -6,7 +6,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 
 import { motion } from 'framer-motion';
 import ProjectCard from './ProjectCard';
-import projects from '../data/projects';
+import { projects } from '../data/projects';
 
 const containerVariants = {
   hidden: {},
