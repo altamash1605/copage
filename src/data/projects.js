@@ -1,4 +1,4 @@
-const projects = [
+export const projects = [
   {
     id: 1,
     title: 'CabAssist',
@@ -7,17 +7,6 @@ const projects = [
     tags: ['React', 'Tailwind', 'Firebase'],
     liveUrl: 'https://cabassist.streamlit.app',
     detailSlug: 'cabassist',
-    details: {
-      summary: 'CabAssist is a comprehensive fleet management dashboard designed to streamline ride operations and driver assignments.',
-      features: [
-        'Live driver tracking via Firebase and Map APIs',
-        'Admin dashboard with ride history and analytics',
-        'Responsive mobile-first design for field managers',
-      ],
-      problem: 'Fleet managers often struggle with tracking and dispatching rides efficiently, especially in real-time scenarios.',
-      solution: 'CabAssist integrates live maps, driver statuses, and assignment tools into a single unified dashboard.',
-      techStack: ['React', 'Tailwind CSS', 'Firebase Realtime DB'],
-    },
   },
   {
     id: 2,
@@ -27,17 +16,6 @@ const projects = [
     tags: ['Node.js', 'Puppeteer', 'Express'],
     liveUrl: '',
     detailSlug: 'google-maps-scraper',
-    details: {
-      summary: 'A scraping tool to extract business names, contacts, and metadata from Google Maps.',
-      features: [
-        'Automated Puppeteer-based navigation and scraping',
-        'Filter and export data as CSV or JSON',
-        'Headless and browser-visible modes for debugging',
-      ],
-      problem: 'Manual data collection from Google Maps is time-consuming and error-prone.',
-      solution: 'This tool automates the extraction process and supports batch queries.',
-      techStack: ['Node.js', 'Puppeteer', 'Express'],
-    },
   },
   {
     id: 3,
@@ -47,17 +25,6 @@ const projects = [
     tags: ['Vue', 'Supabase', 'Tailwind'],
     liveUrl: 'https://teamassist.example.com',
     detailSlug: 'teamassist',
-    details: {
-      summary: 'TeamAssist is a lightweight Asana/Trello alternative for small remote teams.',
-      features: [
-        'Task boards with drag-and-drop tasks',
-        'Real-time updates with Supabase subscriptions',
-        'Secure file upload and role-based access',
-      ],
-      problem: 'Remote teams need simple, reliable tools without enterprise bloat.',
-      solution: 'TeamAssist delivers the essentials of project management in a minimal UI.',
-      techStack: ['Vue.js', 'Supabase', 'Tailwind CSS'],
-    },
   },
   {
     id: 4,
@@ -67,17 +34,6 @@ const projects = [
     tags: ['Next.js', 'Tailwind', 'GraphQL'],
     liveUrl: '',
     detailSlug: 'devprofile',
-    details: {
-      summary: 'DevProfile lets developers auto-generate a modern portfolio using their GitHub data.',
-      features: [
-        'Import GitHub projects and stats',
-        'One-click deploy on Vercel',
-        'Custom domain and theming support',
-      ],
-      problem: 'Creating and maintaining a portfolio is tedious for devs who update code often.',
-      solution: 'DevProfile uses GitHub APIs and GraphQL to keep your site updated automatically.',
-      techStack: ['Next.js', 'GraphQL', 'Tailwind CSS'],
-    },
   },
   {
     id: 5,
@@ -87,17 +43,6 @@ const projects = [
     tags: ['React', 'Redux', 'Stripe'],
     liveUrl: 'https://snapsell.com',
     detailSlug: 'snapsell',
-    details: {
-      summary: 'SnapSell lets creators launch a full e-commerce store without touching code.',
-      features: [
-        'Visual editor with drag-and-drop layout',
-        'Built-in product management and orders',
-        'Stripe-powered checkout and analytics',
-      ],
-      problem: 'Most e-commerce platforms are bloated or too restrictive for creators.',
-      solution: 'SnapSell offers a balance of customization and ease-of-use tailored to solo sellers.',
-      techStack: ['React', 'Redux', 'Stripe API'],
-    },
   },
   {
     id: 6,
@@ -107,17 +52,6 @@ const projects = [
     tags: ['Flutter', 'Firebase', 'TensorFlow Lite'],
     liveUrl: '',
     detailSlug: 'ecoscan',
-    details: {
-      summary: 'EcoScan helps consumers make eco-friendly choices by scanning product barcodes.',
-      features: [
-        'Scan barcodes to get eco-ratings and carbon footprint data',
-        'Crowdsourced database of verified brands',
-        'Offline scanning with local model inference',
-      ],
-      problem: 'There is no quick way for consumers to assess a product’s environmental impact in-store.',
-      solution: 'EcoScan uses machine learning and community data to rate sustainability on the go.',
-      techStack: ['Flutter', 'Firebase', 'TensorFlow Lite'],
-    },
   },
   {
     id: 7,
@@ -127,17 +61,6 @@ const projects = [
     tags: ['Laravel', 'MySQL', 'Bootstrap'],
     liveUrl: 'https://localsprout.io',
     detailSlug: 'localsprout',
-    details: {
-      summary: 'LocalSprout connects local farmers with conscious consumers in their region.',
-      features: [
-        'Vendor dashboard with inventory and delivery schedules',
-        'Product discovery and search with location filters',
-        'Payment integration with local gateway',
-      ],
-      problem: 'Local farmers lack digital tools to market and sell their products directly.',
-      solution: 'LocalSprout provides a tailored e-commerce experience for fresh local produce.',
-      techStack: ['Laravel', 'MySQL', 'Bootstrap'],
-    },
   },
   {
     id: 8,
@@ -147,18 +70,5 @@ const projects = [
     tags: ['React', 'WebRTC', 'Socket.io'],
     liveUrl: '',
     detailSlug: 'codetogether',
-    details: {
-      summary: 'CodeTogether enables real-time pair programming with shared cursors and audio.',
-      features: [
-        'Live code editing and terminal',
-        'Audio/video calling powered by WebRTC',
-        'Team rooms and file sharing',
-      ],
-      problem: 'Remote dev teams struggle to collaborate on code in real time.',
-      solution: 'CodeTogether bridges the gap with integrated code, voice, and video tools.',
-      techStack: ['React', 'WebRTC', 'Socket.io'],
-    },
   },
 ];
-
-export default projects;
