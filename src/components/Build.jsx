@@ -20,7 +20,7 @@ export default function Build() {
           <div className="text-white font-josefin md:hidden my-10 space-y-4">
             <p className="text-lg font-semibold">Find us online</p>
             <div className="flex gap-4 text-2xl">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/copage.app?igsh=MXhpaGlqb2JxdjMzdQ==" target="_blank" rel="noopener noreferrer">
                 <FaInstagram className="hover:text-brand transition" />
               </a>
               <a href="https://wa.me/919711059091" target="_blank" rel="noopener noreferrer">
