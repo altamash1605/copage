@@ -35,7 +35,9 @@ export default function CookieConsent() {
         }
         window.gtag = gtag;
         gtag('js', new Date());
-        gtag('config', 'G-CKXQZ6B8XE'); // removed debug_mode
+        gtag('config', 'G-CKXQZ6B8XE',{
+  debug_mode: true
+        }); // removed debug_mode
       };
     }
   };
