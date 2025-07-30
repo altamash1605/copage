@@ -3,7 +3,7 @@ import projects from '../data/projects';
 
 export default function ProjectDetail() {
   const { slug } = useParams();
-  const project = projects.find((p) => p.slug === slug);
+  const project = projects.find((p) => p.detailSlug === slug);
 
   if (!project) {
     return (
