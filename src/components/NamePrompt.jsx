@@ -27,7 +27,7 @@ export default function NamePrompt() {
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'name_collected', {
         event_category: 'engagement',
-        event_label: name,
+        visitor_name: name,
         value: name,
       });
     }
