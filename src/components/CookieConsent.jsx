@@ -18,28 +18,27 @@ export default function CookieConsent() {
     }
   }, []);
 
-  const handleConsent = (accepted) => {
-    localStorage.setItem('cookieConsent', accepted ? 'true' : 'false');
-    setShowBanner(false);
+const handleConsent = (accepted) => {
+  localStorage.setItem('cookieConsent', accepted ? 'true' : 'false');
+  setShowBanner(false);
 
-    if (accepted) {
-      const script = document.createElement('script');
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-CKXQZ6B8XE';
-      script.async = true;
-      document.head.appendChild(script);
+  if (accepted) {
+    const script = document.createElement('script');
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-CKXQZ6B8XE';
+    script.async = true;
+    document.head.appendChild(script);
 
-      script.onload = () => {
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          window.dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-CKXQZ6B8XE', {
-          debug_mode: true,
-        });
-      };
-    }
-  };
+    script.onload = () => {
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-CKXQZ6B8XE', { debug_mode: true });
+    };
+  }
+};
 
   return (
     <AnimatePresence>
