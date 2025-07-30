@@ -1,72 +1,77 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function CookieConsent() {
-  const [showBanner, setShowBanner] = useState(false);
+export default function NamePrompt() {
+  const [showPrompt, setShowPrompt] = useState(false);
+  const [name, setName] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem('cookieConsent');
-    const sessionSeen = sessionStorage.getItem('cookieBannerShown');
+    const handleScroll = () => {
+      const consent = localStorage.getItem('cookieConsent') === 'true';
+      const nameSeen = sessionStorage.getItem('namePromptSeen') === 'true';
+      if (consent && !nameSeen) {
+        setShowPrompt(true);
+        window.removeEventListener('scroll', handleScroll);
+      }
+    };
 
-    if (!consent && !sessionSeen) {
-      const timer = setTimeout(() => {
-        setShowBanner(true);
-        sessionStorage.setItem('cookieBannerShown', 'true');
-      }, 3000);
-
-      return () => clearTimeout(timer);
-    }
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleConsent = (accepted) => {
-    localStorage.setItem('cookieConsent', accepted ? 'true' : 'false');
-    setShowBanner(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name.trim()) return;
 
-    if (accepted) {
-      const script = document.createElement('script');
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-CKXQZ6B8XE';
-      script.async = true;
-      document.head.appendChild(script);
-
-      script.onload = () => {
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          window.dataLayer.push(arguments);
-        }
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', 'G-CKXQZ6B8XE', { debug_mode: true });
-      };
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'name_collected', {
+        event_category: 'engagement',
+        event_label: name,
+        value: name,
+      });
     }
+
+    setSubmitted(true);
+    sessionStorage.setItem('namePromptSeen', 'true');
+    localStorage.setItem('visitorName', name);
+    setTimeout(() => {
+      setShowPrompt(false);
+    }, 1500);
   };
 
   return (
     <AnimatePresence>
-      {showBanner && (
+      {showPrompt && (
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className="fixed bottom-4 left-4 right-4 bg-brand text-gray-800 px-6 py-4 rounded-xl shadow-lg z-50 max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-josefin"
+          className="fixed bottom-4 left-4 right-4 sm:left-1/2 sm:translate-x-[-50%] bg-white text-gray-800 px-6 py-4 rounded-xl shadow-lg z-50 font-josefin max-w-sm w-[95%]"
         >
-          <p className="text-sm sm:text-base">
-            We use cookies to enhance your experience. Do you accept?
-          </p>
-          <div className="flex gap-2">
-            <button
-              onClick={() => handleConsent(true)}
-              className="px-4 py-2 rounded-md bg-white text-brand font-semibold hover:bg-yellow-100 transition"
-            >
-              Accept
-            </button>
-            <button
-              onClick={() => handleConsent(false)}
-              className="px-4 py-2 rounded-md bg-yellow-300 text-gray-600 font-semibold hover:bg-gray-700 transition"
-            >
-              Reject
-            </button>
-          </div>
+          {submitted ? (
+            <p className="text-center text-brand font-semibold">Thanks, {name}!</p>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 items-center justify-between">
+              <label htmlFor="name" className="sr-only">Your Name</label>
+              <input
+                id="name"
+                type="text"
+                placeholder="What's your name?"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="flex-1 px-4 py-2 rounded-md bg-gray-100 outline-none border border-gray-300 w-full"
+                required
+              />
+              <button
+                type="submit"
+                className="bg-brand text-white px-4 py-2 rounded-md font-semibold hover:bg-yellow-500 transition w-full sm:w-auto"
+              >
+                Submit
+              </button>
+            </form>
+          )}
         </motion.div>
       )}
     </AnimatePresence>
