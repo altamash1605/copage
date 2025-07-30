@@ -28,7 +28,7 @@ export default function Footer() {
         <div>
           <h3 className="font-semibold mb-3">Connect</h3>
           <div className="flex gap-4 text-xl text-gray-600">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+            <a href="https://www.instagram.com/copage.app?igsh=MXhpaGlqb2JxdjMzdQ==" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
             <a href="https://x.com" target="_blank" rel="noopener noreferrer"><FaXTwitter /></a>
             <a href="https://wa.me/your-number" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></a>
           </div>
