@@ -7,40 +7,42 @@ export default function NamePrompt() {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    const checkAndShow = () => {
+    const onScroll = () => {
       const consent = localStorage.getItem('cookieConsent') === 'true';
       const nameSeen = sessionStorage.getItem('namePromptSeen') === 'true';
       if (consent && !nameSeen) {
         setShowPrompt(true);
+        sessionStorage.setItem('namePromptTriggered', 'true');
+        window.removeEventListener('scroll', onScroll);
       }
     };
 
-    // initial check
-    checkAndShow();
+    const consent = localStorage.getItem('cookieConsent') === 'true';
+    const alreadyTriggered = sessionStorage.getItem('namePromptTriggered') === 'true';
+    if (consent && !alreadyTriggered) {
+      window.addEventListener('scroll', onScroll);
+    }
 
-    // also listen to resize in case viewport changes does not remount
-    window.addEventListener('resize', checkAndShow);
-    return () => window.removeEventListener('resize', checkAndShow);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-
   const handleSubmit = (e) => {
-  e.preventDefault();
-  if (!name.trim()) return;
+    e.preventDefault();
+    if (!name.trim()) return;
 
-  // Fire GA event
-  window.gtag && window.gtag('event', 'name_collected', {
-    value: name,
-  });
+    // Fire GA event
+    window.gtag && window.gtag('event', 'name_collected', {
+      value: name,
+    });
 
-  setSubmitted(true);
-  sessionStorage.setItem('namePromptSeen', 'true');
-  localStorage.setItem('visitorName', name);
-  setTimeout(() => {
-    setShowPrompt(false);
-  }, 1500);
-};
-  
+    setSubmitted(true);
+    sessionStorage.setItem('namePromptSeen', 'true');
+    localStorage.setItem('visitorName', name);
+    setTimeout(() => {
+      setShowPrompt(false);
+    }, 1500);
+  };
+
   return (
     <AnimatePresence>
       {showPrompt && (
