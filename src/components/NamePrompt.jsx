@@ -25,12 +25,13 @@ export default function NamePrompt() {
     if (!name.trim()) return;
 
     if (typeof window.gtag === 'function') {
-      window.gtag('event', 'name_collected', {
-        event_category: 'engagement',
-        visitor_name: name,
-        value: name,
-      });
-    }
+  window.gtag('event', 'name_collected', {
+    event_category: 'engagement',
+    event_label: name,
+    visitor_name: name,
+    value: name,
+  });
+}
 
     setSubmitted(true);
     sessionStorage.setItem('namePromptSeen', 'true');
