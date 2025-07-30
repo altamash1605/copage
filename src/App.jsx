@@ -1,28 +1,16 @@
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Projects from './components/Projects';
-import Build from './components/Build';
-import Story from './components/Story';
-import Footer from './components/Footer';
-import CookieConsent from './components/CookieConsent';
-import NamePrompt from './components/NamePrompt';
-
-
+// App.jsx
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import ProjectDetail from './components/ProjectDetail';
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <Story />
-        <Projects />
-        <Build />
-      </main>
-      <Footer />
-      <CookieConsent />
-      <NamePrompt />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects/:slug" element={<ProjectDetail />} />
+      </Routes>
+    </Router>
   );
 }
 
