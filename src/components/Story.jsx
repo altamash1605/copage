@@ -33,7 +33,7 @@ export default function Story() {
   }, []);
 
   return (
-    <section id="story" ref={storyRef} className="py-16 px-8 md:px-12 max-w-7xl mx-auto md:mb-12 md:h-screen">
+    <section id="story" ref={storyRef} className="py-16 px-8 md:px-12 max-w-7xl mx-auto md:mb-24 md:h-screen">
       <h2 className="text-4xl md:text-5xl mb-10 font-extrabold font-poppins">
         <span className="text-brand">Co</span>Story
       </h2>
