@@ -26,7 +26,7 @@ export default function Projects() {
   return (
     <motion.section
       id="projects"
-      className="py-16 px-8 md:px-12 max-w-7xl mx-auto"
+      className="py-16 px-8 mt-12  md:px-12 max-w-7xl mx-auto"
       variants={containerVariants}
       initial="hidden"
       whileInView="show"
