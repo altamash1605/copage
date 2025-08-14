@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = 'https://apoj1jktwikmidyui1ox.supabase.co';
+const supabaseUrl = 'https://amzpijkhtwkimdyuiiox.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtenBpamtodHdraW1keXVpaW94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUyMDkwODgsImV4cCI6MjA3MDc4NTA4OH0.Z0mahIN_tKX6P1sxrepvzDDGqV0rTCYFvuzrK3bpXDU'; // Replace this with the actual anon key from your image
 const supabase = createClient(supabaseUrl, supabaseKey);
 
