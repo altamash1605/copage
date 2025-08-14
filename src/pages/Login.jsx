@@ -33,6 +33,9 @@ export default function Login() {
   const handleLogin = async () => {
     await supabase.auth.signInWithOAuth({
       provider: 'google',
+      options: {
+        'https://copage.vercel.app',
+      }
     });
   };
 
