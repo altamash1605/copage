@@ -35,7 +35,7 @@ export default function Login() {
       provider: 'google',
       options: {
         redirectTo:
-        'https://copage.vercel.app',
+        'https://copage.vercel.app/login',
       }
     });
   };
