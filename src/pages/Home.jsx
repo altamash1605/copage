@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../client';
+import supabase from '../supabase/client';
 
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -8,37 +8,40 @@ import Build from '../components/Build';
 import Story from '../components/Story';
 import Footer from '../components/Footer';
 import CookieConsent from '../components/CookieConsent';
-import WelcomeModal from '../components/WelcomeModal';
 import NamePrompt from '../components/NamePrompt';
+import WelcomeModal from '../components/WelcomeModal'; // you’ll need to create this
 
 function Home() {
   const [user, setUser] = useState(null);
   const [showWelcome, setShowWelcome] = useState(false);
+  const [hasName, setHasName] = useState(false);
 
   useEffect(() => {
-    async function fetchUser() {
-      const { data: { user } } = await supabase.auth.getUser();
+    const getUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        setUser(session.user);
+        const { data, error } = await supabase
+          .from('profiles') // adjust if your table is named differently
+          .select('full_name')
+          .eq('id', session.user.id)
+          .single();
 
-      if (user) {
-        setUser(user);
-        const seenWelcome = sessionStorage.getItem('seenWelcome');
-        if (!seenWelcome) {
+        if (data?.full_name) {
+          setHasName(true);
           setShowWelcome(true);
-          sessionStorage.setItem('seenWelcome', 'true');
+          setTimeout(() => setShowWelcome(false), 5000); // auto-hide welcome
         }
       }
-    }
+    };
 
-    fetchUser();
+    getUser();
   }, []);
-
-  const firstName = user?.user_metadata?.full_name?.split(' ')[0] || 'there';
 
   return (
     <>
       <Navbar />
       <main>
-        {showWelcome && <WelcomeModal name={firstName} onClose={() => setShowWelcome(false)} />}
         <Hero />
         <Story />
         <Projects />
@@ -46,7 +49,10 @@ function Home() {
       </main>
       <Footer />
       <CookieConsent />
-      {!user && <NamePrompt />}
+      {user && hasName && showWelcome && (
+        <WelcomeModal name={user.user_metadata?.name || 'there'} />
+      )}
+      {user && !hasName && <NamePrompt user={user} />}
     </>
   );
 }
