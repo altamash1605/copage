@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 import CookieConsent from '../components/CookieConsent';
 import NamePrompt from '../components/NamePrompt';
 import WelcomeModal from '../components/WelcomeModal';
-import { supabase } from '../client'; // make sure this path is correct
+import { supabase } from '../supabase/client'; // make sure this path is correct
 
 function Home() {
   const [firstName, setFirstName] = useState(null);
