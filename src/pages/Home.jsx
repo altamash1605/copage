@@ -8,10 +8,11 @@ import Footer from '../components/Footer';
 import CookieConsent from '../components/CookieConsent';
 import NamePrompt from '../components/NamePrompt';
 import WelcomeModal from '../components/WelcomeModal';
-import supabase from '../supabase/client'; // make sure this path is correct
+import supabase from '../supabase/client';
 
 function Home() {
   const [firstName, setFirstName] = useState(null);
+  const [showWelcome, setShowWelcome] = useState(false);
 
   useEffect(() => {
     const fetchUserName = async () => {
@@ -23,11 +24,22 @@ function Home() {
         const fullName = session.user.user_metadata.full_name;
         const first = fullName.split(' ')[0];
         setFirstName(first);
+        setShowWelcome(true); // Show modal
       }
     };
 
     fetchUserName();
   }, []);
+
+  // Hide modal after 5 seconds
+  useEffect(() => {
+    if (showWelcome) {
+      const timer = setTimeout(() => {
+        setShowWelcome(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [showWelcome]);
 
   return (
     <>
@@ -41,10 +53,10 @@ function Home() {
       <Footer />
       <CookieConsent />
 
-      {firstName ? (
-        <WelcomeModal firstName={firstName} />
+      {showWelcome ? (
+        <WelcomeModal name={firstName} onClose={() => setShowWelcome(false)} />
       ) : (
-        <NamePrompt />
+        !firstName && <NamePrompt />
       )}
     </>
   );
