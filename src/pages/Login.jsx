@@ -13,14 +13,14 @@ export default function Login() {
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
-        navigate('/dashboard'); // Redirect after login
+        navigate('/'); // Redirect after login
       }
     });
 
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
         if (event === 'SIGNED_IN') {
-          navigate('/dashboard');
+          navigate('/');
         }
       }
     );
